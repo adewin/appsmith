@@ -8,6 +8,7 @@ import { ReactComponent as ErrorIcon } from "assets/icons/ads/error.svg";
 import { ReactComponent as SuccessIcon } from "assets/icons/ads/success.svg";
 import { ReactComponent as SearchIcon } from "assets/icons/ads/search.svg";
 import { ReactComponent as CloseIcon } from "assets/icons/ads/close.svg";
+import { ReactComponent as WarningIcon } from "assets/icons/ads/warning.svg";
 import styled from "styled-components";
 import { Size } from "./Button";
 import { sizeHandler } from "./Spinner";
@@ -23,6 +24,7 @@ export type IconName =
   | "success"
   | "search"
   | "close"
+  | "warning"
   | undefined;
 
 const IconWrapper = styled.div<IconProps>`
@@ -35,9 +37,9 @@ const IconWrapper = styled.div<IconProps>`
       props.size ? sizeHandler(props) : props.theme.spaces[9]}px;
     height: ${props =>
       props.size ? sizeHandler(props) : props.theme.spaces[9]}px;
-    path {
-      fill: ${props => props.theme.colors.blackShades[4]};
-    }
+    // path {
+    //   fill: ${props => props.theme.colors.blackShades[4]};
+    // }
   }
   visibility: ${props => (props.invisible ? "hidden" : "visible")};
 
@@ -87,6 +89,9 @@ const Icon = (props: IconProps) => {
       break;
     case "success":
       returnIcon = <SuccessIcon />;
+      break;
+    case "warning":
+      returnIcon = <WarningIcon />;
       break;
     case "search":
       returnIcon = <SearchIcon />;
